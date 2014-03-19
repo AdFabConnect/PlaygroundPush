@@ -72,7 +72,7 @@ class Module
         );
     }
 
-    public function addCronjob($e)
+    /*public function addCronjob($e)
     {
         $cronjobs = $e->getParam('cronjobs');
         $cronjobs['notifications_send'] = array(
@@ -80,6 +80,7 @@ class Module
             'callback'  => '\PlaygroundPush\Cron\Notification::send',
             'args'      => array(),
         );
-    }
+        return $cronjobs;
+    }*/
         
 }
