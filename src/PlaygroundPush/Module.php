@@ -66,6 +66,14 @@ class Module
                     return new Mapper\Push($sm->get('playgroundpush_doctrine_em'), $sm->get('playgroundpush_module_options'));
                 },
 
+                'playgroundpush_queue_mapper' => function  ($sm) {
+                    return new Mapper\Queue($sm->get('playgroundpush_doctrine_em'), $sm->get('playgroundpush_module_options'));
+                },
+
+                'playgroundpush_notification_mapper' => function  ($sm) {
+                    return new Mapper\Notification($sm->get('playgroundpush_doctrine_em'), $sm->get('playgroundpush_module_options'));
+                },
+
             ),
             'invokables' => array(
                 'playgroundpush_device_service'        => 'PlaygroundPush\Service\Device',
