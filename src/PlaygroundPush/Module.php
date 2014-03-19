@@ -24,8 +24,6 @@ class Module
             $options = $serviceManager->get('playgroundcore_module_options');
             $locale = $options->getLocale();
             $translator->setLocale($locale);
-
-            $eventManager->getSharedManager()->attach('Zend\Mvc\Application','getCronjobs', array($this, 'addCronjob'));
         }
 
         AbstractValidator::setDefaultTranslator($translator,'playgroundpush');
@@ -64,10 +62,15 @@ class Module
                     return new Mapper\Device($sm->get('playgroundpush_doctrine_em'), $sm->get('playgroundpush_module_options'));
                 },
 
+                'playgroundpush_push_mapper' => function  ($sm) {
+                    return new Mapper\Push($sm->get('playgroundpush_doctrine_em'), $sm->get('playgroundpush_module_options'));
+                },
+
             ),
             'invokables' => array(
                 'playgroundpush_device_service'        => 'PlaygroundPush\Service\Device',
                 'playgroundpush_notification_service'  => 'PlaygroundPush\Service\Notification',
+                'playgroundpush_push_service'          => 'PlaygroundPush\Service\Push',
             ),
         );
     }

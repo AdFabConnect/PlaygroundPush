@@ -39,6 +39,49 @@ return array(
                     ),
                 ),
             ),
+            'admin' => array(
+                'child_routes' => array(
+                    'playgroundpush' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/push',
+                            'defaults' => array(
+                                'controller' => 'PlaygroundPush\Controller\Admin\Push',
+                                'action'     => 'list',
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'remove' => array(
+                                'type' => 'Segment',
+                                'options' => array(
+                                    'route' => '/remove[/:pushId]',
+                                    'defaults' => array(
+                                        'controller' => 'PlaygroundPush\Controller\Admin\Push',
+                                        'action'     => 'remove',
+                                    ),
+                                    'constraints' => array(
+                                        'pushId' => '[0-9]*',
+                                    ),
+                                ),
+                            ), 
+                            'edit' => array(
+                                'type' => 'Segment',
+                                'options' => array(
+                                    'route' => '/edit[/:pushId]',
+                                    'defaults' => array(
+                                        'controller' => 'PlaygroundPush\Controller\Admin\Push',
+                                        'action'     => 'edit',
+                                    ),
+                                    'constraints' => array(
+                                        'pushId' => '[0-9]*',
+                                    ),
+                                ),
+                            ), 
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -50,9 +93,18 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'PlaygroundPush\Controller\Api\Device'   => 'PlaygroundPush\Controller\Api\DeviceController',
+            'PlaygroundPush\Controller\Admin\Push'   => 'PlaygroundPush\Controller\Admin\PushController',
         ),
     ),
     'navigation' => array(
+        'admin' => array(
+            'push' => array(
+                'label' => 'Push',
+                'route' => 'admin/playgroundpush',
+                'resource' => 'admin',
+                'privilege' => 'list',
+            ),
+        ),
     ),
     'translator' => array(
         'locale' => 'fr_FR',
