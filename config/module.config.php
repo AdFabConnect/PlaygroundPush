@@ -32,7 +32,7 @@ return array(
                         'options' => array(
                             'route' => '/add-device',
                             'defaults' => array(
-                                'controller' => 'SyncMyTv\Controller\Api\Device',
+                                'controller' => 'PlaygroundPush\Controller\Api\Device',
                                 'action'     => 'add',
                             ),
                         ),
@@ -49,6 +49,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
+            'PlaygroundPush\Controller\Api\Device'   => 'PlaygroundPush\Controller\Api\DeviceController',
         ),
     ),
     'navigation' => array(
