@@ -18,7 +18,7 @@ return array(
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    'PlaygroundPush\Entity'  => 'playgroundcms_entity',
+                    'PlaygroundPush\Entity'  => 'playgroundpush_entity',
                 )
             )
         )
